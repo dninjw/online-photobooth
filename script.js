@@ -4,7 +4,8 @@ const photo = document.getElementById('photo');
 const snap = document.getElementById('snap');
 const start = document.getElementById('start');
 const download = document.getElementById('download');
-const countdownSound = document.getElementById('countdown-sound');
+const countdownSound = document.getElementById('countdown-sound')
+cost countdownText = document.getElementById('countdown');
 
 start.onclick = async () => {
   const stream = await navigator.mediaDevices.getUserMedia({ video: true });
@@ -12,12 +13,13 @@ start.onclick = async () => {
 };
 
 snap.onclick = () => {
-  snap.onclick = () => {
-  const countdownText = document.getElementById('countdown');
   let count = 3;
-
   countdownText.style.display = 'block';
   countdownText.textContent = count;
+
+  countdownSound.play();
+
+}
 
   const countdownInterval = setInterval(() => {
     count--;
@@ -26,6 +28,7 @@ snap.onclick = () => {
     } else {
       clearInterval(countdownInterval);
       countdownText.textContent = '📸';
+      
       setTimeout(() => {
         countdownText.style.display = 'none';
 
